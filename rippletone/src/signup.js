@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 import "./login.css";
 
-function Appp() {
+function Signup() {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -59,19 +59,31 @@ function Appp() {
     <div className="form">
       <form onSubmit={handleSubmit}>
         <div className="input-container">
-          <label>Username </label>
-          <input type="text" name="uname" required />
+          <label>Email </label>
+          <input type="email" name="email" required />
           {renderErrorMessage("uname")}
+        </div>
+        <div className="input-container">
+          <label>User Name </label>
+          <input type="text" name="uname" required />
+          {renderErrorMessage("pass")}
+        </div>
+        <div className="input-container">
+          <label>Mobile Number </label>
+          <input type="tel" name="mnum" pattern ="[0-9]{10}"required />
+          {renderErrorMessage("pass")}
         </div>
         <div className="input-container">
           <label>Password </label>
           <input type="password" name="pass" required />
           {renderErrorMessage("pass")}
         </div>
-        <div>
-          Don't have an account?
-          <a href="/signup"> signup</a>
+        <div className="input-container">
+          <label>Confirm Password</label>
+          <input type="password" name="confpass"required />
+          {renderErrorMessage("pass")}
         </div>
+        
         <div className="button-container">
           <input type="submit" />
         </div>
@@ -89,4 +101,4 @@ function Appp() {
   );
 }
 
-export default Appp;
+export default Signup;
