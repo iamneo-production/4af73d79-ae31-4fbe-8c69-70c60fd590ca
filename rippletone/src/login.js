@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 import "./login.css";
 
-function Appp() {
+function Login() {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -60,17 +60,17 @@ function Appp() {
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>Username </label>
-          <input type="text" name="uname" required />
+          <input type="text" name="uname" size="10" required />
           {renderErrorMessage("uname")}
         </div>
         <div className="input-container">
           <label>Password </label>
-          <input type="password" name="pass" required />
+          <input type="password" name="pass" size="10"  required />
           {renderErrorMessage("pass")}
         </div>
         <div>
           Don't have an account?
-          <a href="/signup"> signup</a>
+          <a href="/signup"> sign up</a>
         </div>
         <div className="button-container">
           <input type="submit" />
@@ -89,4 +89,4 @@ function Appp() {
   );
 }
 
-export default Appp;
+export default Login;
