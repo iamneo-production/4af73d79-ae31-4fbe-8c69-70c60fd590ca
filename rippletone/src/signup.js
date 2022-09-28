@@ -3,10 +3,15 @@ import React, { useState } from "react";
 
 import "./login.css";
 
+
 function Signup() {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [email,setemail]=useState('');
+  const [username,setusername]=useState('');
+  const [mobileNumber,setmobileNumber]=useState('');
+  const [password,setpassword]=useState('');
 
   // User Login info
   const database = [
@@ -53,43 +58,51 @@ function Signup() {
     name === errorMessages.name && (
       <div className="error">{errorMessages.message}</div>
     );
-
+    const handleclick=(e)=>{
+      e.preventDefault()
+      const obj={email,username,mobileNumber,password};
+      const abc=fetch ("https://8080-cafafbaeabeacdeabfbaffeeeabbfbeab.examlyiopb.examly.io/signup",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(obj)
+    }).then(()=>{console.log("ok")})}
   // JSX code for login form
   const renderForm = (
     <div className="form">
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>Email </label>
-          <input type="email" name="email" required />
+          <input type="email" id="email" name="email"  onChange={(e)=>setemail(e.target.value)} required />
           {renderErrorMessage("uname")}
         </div>
         <div className="input-container">
           <label>User Name </label>
-          <input type="text" name="uname" required />
+          <input type="text"  id="username" name="uname" onChange={(e)=>setusername(e.target.value)} required />
           {renderErrorMessage("pass")}
         </div>
         <div className="input-container">
           <label>Mobile Number </label>
-          <input type="tel" name="mnum" pattern ="[0-9]{10}"required />
+          <input type="tel" id="mobileNumber" name="mnum" onChange={(e)=>setmobileNumber(e.target.value)} pattern ="[0-9]{10}"  required />
           {renderErrorMessage("pass")}
         </div>
         <div className="input-container">
           <label>Password </label>
-          <input type="password" name="pass" required />
+          <input type="password" id="password" name="pass" onChange={(e)=>setpassword(e.target.value)} required />
           {renderErrorMessage("pass")}
         </div>
         <div className="input-container">
           <label>Confirm Password</label>
-          <input type="password" name="confpass"required />
+          <input type="password" id="confirmPassword" name="confpass"required />
           {renderErrorMessage("pass")}
         </div>
         
         <div className="button-container">
-          <input type="submit" />
+          <input type="submit"  onClick={handleclick} />
         </div>
       </form>
     </div>
   );
+
 
   return (
     <div className="app">

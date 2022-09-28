@@ -7,6 +7,8 @@ function Login() {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [email,setemail]=useState('');
+  const [password,setpassword]=useState('');
 
   // User Login info
   const database = [
@@ -20,6 +22,19 @@ function Login() {
     uname: "invalid username",
     pass: "invalid password"
   };
+
+  const handleclick=(e)=>{
+    e.preventDefault()
+    const obj={email,password};
+    if(obj.email==="admin@gmail.com" && obj.password === "admin1234")
+      console.log("admin")
+      else{
+    const abc=fetch ("https://8080-cafafbaeabeacdeabfbaffeeeabbfbeab.examlyiopb.examly.io/login",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(obj)
+  }).then(res=>console.log(res))}}
+  
 
   const handleSubmit = (event) => {
     //Prevent page reload
@@ -38,9 +53,10 @@ function Login() {
       } else {
         setIsSubmitted(true);
       }
-    } else {
+    } 
+    else {
       // Username not found
-      setErrorMessages({ name: "uname", message: errors.uname });
+      handleclick()
     }
   };
 
@@ -56,12 +72,12 @@ function Login() {
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>Username </label>
-          <input type="text" name="uname" size="10" required />
+          <input type="text" name="email" id="email" size="10"  onChange={(e)=>setemail(e.target.value)} required />
           {renderErrorMessage("uname")}
         </div>
         <div className="input-container">
           <label>Password </label>
-          <input type="password" name="pass" size="10"  required />
+          <input type="password" name="pass" size="10" id="password" onChange={(e)=>setpassword(e.target.value)} required />
           {renderErrorMessage("pass")}
         </div>
         <div>
@@ -69,7 +85,7 @@ function Login() {
           <a href="/signup"> sign up</a>
         </div>
         <div className="button-container">
-          <input type="submit" />
+          <input type="submit" onClick={handleclick} />
         </div>
       </form>
     </div>
