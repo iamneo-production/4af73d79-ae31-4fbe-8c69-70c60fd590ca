@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 // import ReactDOM from "react-dom";
 import axios from 'axios';
-
+// import Home from './adminhome/Home';
+import Aa from './aa.js'
+import Signup from './signup.js'
 
 import "./login.css";
 
@@ -53,6 +55,17 @@ function Login() {
           {"headers": headers}
   ).then(x=>{
     console.log(x.data);
+    let a=x.data;
+    console.log(a);
+    if(a.message === "admin"){
+      <Aa/>
+    console.log("abc");
+    }
+    else if(a.message === "true"){}
+    else{
+      <Signup/>
+      console.log("a");
+    }
   })
 
   
@@ -114,8 +127,8 @@ function Login() {
           <a href="/signup"> sign up</a>
         </div>
         <div className="button-container">
-        <input type="button"  onClick={handleclick}/>
-          {/* <input type="button" onClick={handleclick} /> */}
+        {/* <input type="button"  onClick={handleclick}/> */}
+          <input type="submit" onClick={handleclick} />
         </div>
       </form>
     </div>
