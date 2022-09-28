@@ -5,11 +5,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.examly.springapp.entity.Login;
 import com.examly.springapp.entity.Users;
 import com.examly.springapp.model.UserModel;
 import com.examly.springapp.repo.LoginRepo;
@@ -95,15 +99,26 @@ public class UserController {
 		return um;
 	}
 
-	void userEditSave(UserModel data) {
+	@PutMapping("/userEdit")
+	String userEditSave(@RequestBody UserModel data) {
 
 		Users u = data.convertUserModel(data);
 
+//		System.out.println(u);
 		userRepo.save(u);
+
+		return u.toString();
 
 	}
 
-	void userDelete(String id) {
+	@DeleteMapping("/delete/{userid}")
+	void userDelete(@PathVariable int userid) {
+		
+
+		Users user = userRepo.findById(userid).get(0);
+		userRepo.delete(user);
+		Login login = loginRepo.findByEmail(user.getEmail()).get(0);
+		loginRepo.delete(login);
 
 	}
 

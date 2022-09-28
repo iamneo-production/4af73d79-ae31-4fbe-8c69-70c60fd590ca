@@ -82,12 +82,13 @@ public class UserModel {
 	public Users convertUserModel(UserModel userModel) {
 
 		Users user = new Users();
-
 		user.setActive(userModel.getActive());
 		user.setEmail(userModel.getEmail());
 		user.setMobileNumber(userModel.getMobileNumber());
 		user.setRole(userModel.getRole());
 		user.setUsername(userModel.getUsername());
+		user.setUserid(userModel.getUserid());
+		
 
 		return user;
 
@@ -108,6 +109,13 @@ public class UserModel {
 
 		return um;
 
+	}
+
+	@Override
+	public String toString() {
+		return "UserModel [email=" + email + ", password=" + password + ", username=" + username + ", mobileNumber="
+				+ mobileNumber + ", active=" + active + ", role=" + role + ", userid=" + userid + ", loginRepo="
+				+ loginRepo + "]";
 	}
 
 }
