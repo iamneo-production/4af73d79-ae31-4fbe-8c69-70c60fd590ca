@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 // import Home from './adminhome/Home';
 import Aa from './aa.js'
-import Signup from './signup.js'
+// import Signup from './signup.js'
 
 import "./login.css";
 
@@ -59,12 +59,14 @@ function Login() {
     console.log(a);
     if(a.message === "admin"){
       <Aa/>
-    console.log("abc");
+    console.log("admin");
     }
-    else if(a.message === "true"){}
+    else if(a.message === "true"){
+      console.log("is user")
+    }
     else{
-      <Signup/>
-      console.log("a");
+      <a href="/signup"> sign up</a>
+      console.log("Not a User");
     }
   })
 
