@@ -9,14 +9,23 @@ public class Users {
 
 	@Id
 	private int userid;
+
 	private String email;
 
 	private String username;
 	@Column(name = "mobile")
 	private String mobileNumber;
 	private int active;
-	
+
 	private String role;
+
+	public int getUserid() {
+		return userid;
+	}
+
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
 
 	public String getEmail() {
 		return email;
@@ -63,6 +72,5 @@ public class Users {
 		return "Users [userid=" + userid + ", email=" + email + ", username=" + username + ", mobileNumber="
 				+ mobileNumber + ", active=" + active + ", role=" + role + "]";
 	}
-
 
 }
