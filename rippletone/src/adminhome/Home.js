@@ -67,4 +67,4 @@ padding:.3rem;
 justify-content: space-around;
 background:green;
 `
-let Box=styled.div
+let Box=styled.div;

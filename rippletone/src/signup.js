@@ -65,7 +65,7 @@ function Signup() {
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify(obj)
-    }).then(()=>{console.log("ok")})}
+    }).then(()=>{console.log("ok"+abc)})}
   // JSX code for login form
   const renderForm = (
     <div className="form">
