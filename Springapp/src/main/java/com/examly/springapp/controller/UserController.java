@@ -69,7 +69,7 @@ public class UserController {
 			um.setUserid(sno++);
 			System.out.println(sno);
 
-			list.add(um);
+			list.add(um); 
 		}
 
 		return list;
